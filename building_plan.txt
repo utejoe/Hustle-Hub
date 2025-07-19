@@ -1,0 +1,111 @@
+
+Campus Hustle App – Launch Plan Summary
+
+✅ Step 1: Name the Campus Hustle App
+Name Ideas:
+- HustleHub: Central place for student services
+- UniHustle: Straight to the point – university hustle
+- Skillmate: Skills + classmate = Skillmate
+- SideGig Campus: Focus on campus side hustles
+- CampusLink: Linking students with services
+- TradiUni: Trade + University (local feel)
+- Offerly: Short and modern, service-focused
+- SnapHustle: Fast, catchy – fits students' vibe
+- GigJam Campus: Vibe of speed + gigs
+
+✅ Step 2: UI Wireframe Plan (MVP)
+👤 User Side
+- Home Page: Categories (e.g., Printing, Makeup, Photographers)
+- Browse Listings by School: Search bar, filters
+- Listing Card: Title, Image, ₦Price, Contact via WhatsApp
+- Post Listing: Form with title, desc, price, category, school, upload image
+- Login/Signup: Email/phone-based
+
+🛠 Admin Side
+- Dashboard: Approve/Delete listings
+- User List: Ban, verify, contact vendors
+- Stats: Listings per school, boost history
+
+✅ Step 3: Database (MongoDB Atlas) Plan
+Collections:
+
+🔹 Users
+{
+  _id,
+  name,
+  email,
+  phone,
+  school,
+  isVendor: true/false,
+  isVerified: true/false,
+  premium: true/false,
+  createdAt
+}
+
+🔹 Listings
+{
+  _id,
+  userId,
+  title,
+  description,
+  category,
+  price,
+  imageUrl,
+  contactMethod: 'whatsapp',
+  school,
+  isBoosted: true/false,
+  createdAt
+}
+
+🔹 Admin
+{
+  email,
+  password (hashed),
+  role: "admin"
+}
+
+✅ Step 4: Landing Page / Marketing Copy
+🎓 Campus Hustle — Where Campus Skills Meet Real Money
+
+Are you a student with a skill or service? Join hundreds of students across Nigerian campuses turning their talents into income.
+
+✅ Post your service in under 60 seconds
+💬 Get contacted directly via WhatsApp
+📈 Boost your visibility, get verified, and earn more
+🚀 Free to join — earn from Day 1
+
+CTA Buttons:
+👉 Post Your Hustle Now | 👉 Browse Services Near You
+
+✅ Step 5: Prioritize MVP Features
+Phase 1 (First 7–10 days)
+- Student Sign Up/Login
+- Create Listings (image upload, WhatsApp link)
+- Browse by school & category
+- Basic Admin dashboard
+- Deploy live (Netlify + Render)
+
+Phase 2 (Week 2–3)
+- Verification system
+- Boost listing payment (via Paystack)
+- Premium plan features (badge, priority listing)
+- Recruit 5 Campus Reps
+
+
+
+homepage: 
+
+client/src/
+├── components/
+│   ├── HeroSection.jsx
+│   ├── CategoryGrid.jsx
+│   ├── RecentListings.jsx
+│   ├── HowItWorks.jsx
+│   ├── CallToAction.jsx
+│   └── Footer.jsx
+├── pages/
+│   └── Home.jsx
+
+
+
+there will be also a prompt that if your sckill is not here pls addd it.. 

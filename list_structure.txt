@@ -1,0 +1,34 @@
+Project Structure: hustle-hub
+
+|-- Color_Palette_Guide.txt
+|-- building_plan.txt
+|-- client
+    |-- .gitignore
+    |-- README.md
+    |-- package.json
+    |-- public
+        |-- index.html
+        |-- manifest.json
+        |-- robots.txt
+    |-- src
+        |-- App.css
+        |-- App.js
+        |-- App.test.js
+        |-- Assets
+        |-- Components
+            |-- Footer
+            |-- Home
+            |-- Navbar
+        |-- Context
+        |-- Pages
+            |-- Home.jsx
+        |-- global.css
+        |-- index.css
+        |-- index.js
+        |-- reportWebVitals.js
+        |-- setupTests.js
+|-- finance_plan.txt
+|-- server
+    |-- .env
+    |-- index.js
+    |-- package.json
