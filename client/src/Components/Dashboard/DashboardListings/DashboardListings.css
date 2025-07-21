@@ -1,0 +1,50 @@
+.dashboard-listings {
+  padding: 30px 20px;
+}
+
+.dashboard-listings h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--dark-bg);
+}
+
+.listing-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.listing-card {
+  padding: 20px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+.listing-card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-badge.active {
+  background-color: var(--success-green);
+  color: var(--white);
+}
+
+.status-badge.boosted {
+  background-color: var(--primary-yellow);
+  color: var(--black);
+}
+
+.status-badge.pending {
+  background-color: var(--light-gray);
+  color: var(--black);
+}

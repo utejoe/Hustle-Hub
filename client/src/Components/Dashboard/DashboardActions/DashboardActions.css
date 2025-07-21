@@ -1,0 +1,24 @@
+.dashboard-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.action-btn {
+  background-color: var(--primary-yellow);
+  color: var(--black);
+}
+
+.action-btn:hover {
+  background-color: var(--hover-yellow);
+}
+
+.boost-btn {
+  background-color: var(--info-blue);
+  color: var(--black);
+}
+
+.boost-btn:hover {
+  background-color: #bfdbfe;
+}

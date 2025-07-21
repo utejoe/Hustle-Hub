@@ -1,0 +1,16 @@
+.dashboard-header {
+  padding: 40px 20px 20px;
+  background-color: var(--dark-bg);
+  color: var(--primary-yellow);
+  text-align: center;
+}
+
+.dashboard-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  font-size: 18px;
+  color: var(--light-gray);
+}

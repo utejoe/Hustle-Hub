@@ -1,0 +1,31 @@
+.dashboard-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: var(--white);
+  box-shadow: 0 2px 4px var(--shadow);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: var(--bg-light);
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+.stat-card h3 {
+  color: var(--dark-bg);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-yellow);
+}

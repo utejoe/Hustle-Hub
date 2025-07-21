@@ -1,9 +1,10 @@
 Project Structure: hustle-hub
 
+|-- .gitignore
 |-- Color_Palette_Guide.txt
+|-- README.md
 |-- building_plan.txt
 |-- client
-    |-- .gitignore
     |-- README.md
     |-- package.json
     |-- public
@@ -16,12 +17,16 @@ Project Structure: hustle-hub
         |-- App.test.js
         |-- Assets
         |-- Components
+            |-- BrowseListings
             |-- Footer
             |-- Home
             |-- Navbar
+            |-- PostListing
         |-- Context
         |-- Pages
+            |-- BrowseListings.jsx
             |-- Home.jsx
+            |-- PostListing.jsx
         |-- global.css
         |-- index.css
         |-- index.js
