@@ -6,11 +6,16 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
+const authRoutes = require("./routes/authRoutes");
+const uploadRoute = require("./routes/upload");
+
 
 const port = process.env.PORT || 3300;
 
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 app.use(cors());
+app.use("/api/upload", uploadRoute);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)

@@ -6,6 +6,7 @@
   --primary-yellow: #ffcc00;
   --hover-yellow: #e6b800;
   --shadow: rgba(0, 0, 0, 0.1);
+  --text-muted: #666666;
 }
 
 * {

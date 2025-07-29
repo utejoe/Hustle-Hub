@@ -9,7 +9,6 @@ const PostForm = () => {
     price: '',
     category: '',
     school: '',
-    whatsapp: '',
     image: null,
   });
 
@@ -31,7 +30,6 @@ const PostForm = () => {
       price: '',
       category: '',
       school: '',
-      whatsapp: '',
       image: null,
     });
   };
@@ -43,7 +41,6 @@ const PostForm = () => {
       <FormInput label="Price (₦)" name="price" value={formData.price} onChange={handleChange} />
       <FormInput label="Category" name="category" value={formData.category} onChange={handleChange} placeholder="e.g. Photography, Makeup" />
       <FormInput label="School" name="school" value={formData.school} onChange={handleChange} />
-      <FormInput label="WhatsApp Number" name="whatsapp" value={formData.whatsapp} onChange={handleChange} />
       <div className="form-group">
         <label>Upload Image</label>
         <input type="file" name="image" accept="image/*" onChange={handleChange} />

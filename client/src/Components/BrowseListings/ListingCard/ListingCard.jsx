@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ListingCard.css';
 
-const ListingCard = ({ title, image, price, school, whatsapp }) => {
+const ListingCard = ({ _id, title, image, price, school }) => {
   return (
     <div className="listing-card">
       <img src={image} alt={title} />
@@ -9,9 +10,9 @@ const ListingCard = ({ title, image, price, school, whatsapp }) => {
         <h3>{title}</h3>
         <p className="price">₦{price}</p>
         <p className="school">{school}</p>
-        <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
-          Contact on WhatsApp
-        </a>
+        <Link to={`/listing/${_id}`} className="view-details-btn">
+          View Details
+        </Link>
       </div>
     </div>
   );

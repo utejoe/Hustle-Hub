@@ -4,14 +4,6 @@ Campus Hustle App – Launch Plan Summary
 ✅ Step 1: Name the Campus Hustle App
 Name Ideas:
 - HustleHub: Central place for student services
-- UniHustle: Straight to the point – university hustle
-- Skillmate: Skills + classmate = Skillmate
-- SideGig Campus: Focus on campus side hustles
-- CampusLink: Linking students with services
-- TradiUni: Trade + University (local feel)
-- Offerly: Short and modern, service-focused
-- SnapHustle: Fast, catchy – fits students' vibe
-- GigJam Campus: Vibe of speed + gigs
 
 ✅ Step 2: UI Wireframe Plan (MVP)
 👤 User Side
