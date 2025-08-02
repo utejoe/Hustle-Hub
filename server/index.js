@@ -8,14 +8,22 @@ const path = require("path");
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const uploadRoute = require("./routes/upload");
+const listingRoutes = require("./routes/listingRoutes");
+const chatRoutes = require("./routes/chat");
+const orderRoutes = require("./routes/order");
+const adminRoutes = require("./routes/admin");
 
 
 const port = process.env.PORT || 3300;
 
 app.use(express.json());
 app.use("/api/auth", authRoutes);
-app.use(cors());
 app.use("/api/upload", uploadRoute);
+app.use("/api/listings", listingRoutes);
+app.use("/api/chats", chatRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/admin", adminRoutes);
+app.use(cors());
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
