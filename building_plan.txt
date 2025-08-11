@@ -9,7 +9,7 @@ Name Ideas:
 👤 User Side
 - Home Page: Categories (e.g., Printing, Makeup, Photographers)
 - Browse Listings by School: Search bar, filters
-- Listing Card: Title, Image, ₦Price, Contact via WhatsApp
+- Listing Card: Title, Image, ₦Price, view details (to discuss on the website chat app)
 - Post Listing: Form with title, desc, price, category, school, upload image
 - Login/Signup: Email/phone-based
 
@@ -43,7 +43,7 @@ Collections:
   category,
   price,
   imageUrl,
-  contactMethod: 'whatsapp',
+  contactMethod: 'website chatup',
   school,
   isBoosted: true/false,
   createdAt
@@ -62,7 +62,7 @@ Collections:
 Are you a student with a skill or service? Join hundreds of students across Nigerian campuses turning their talents into income.
 
 ✅ Post your service in under 60 seconds
-💬 Get contacted directly via WhatsApp
+💬 Get contacted on website for more details
 📈 Boost your visibility, get verified, and earn more
 🚀 Free to join — earn from Day 1
 
@@ -72,7 +72,7 @@ CTA Buttons:
 ✅ Step 5: Prioritize MVP Features
 Phase 1 (First 7–10 days)
 - Student Sign Up/Login
-- Create Listings (image upload, WhatsApp link)
+- Create Listings (image upload, chat app)
 - Browse by school & category
 - Basic Admin dashboard
 - Deploy live (Netlify + Render)
