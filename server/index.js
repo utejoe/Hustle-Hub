@@ -16,6 +16,7 @@ const adminRoutes = require("./routes/admin");
 
 const port = process.env.PORT || 3300;
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/upload", uploadRoute);
@@ -23,7 +24,6 @@ app.use("/api/listings", listingRoutes);
 app.use("/api/chats", chatRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminRoutes);
-app.use(cors());
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
@@ -34,6 +34,9 @@ mongoose.connect(process.env.MONGO_URI)
 app.get("/", (req, res) => {
   res.send("Hustle Hub Loading");
 });
+
+
+
 
 // Start Server
 app.listen(port, (error) => {

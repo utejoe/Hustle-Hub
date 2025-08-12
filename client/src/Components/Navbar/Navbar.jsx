@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
-import logo from '../../Assets/nav-logo.PNG'; 
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../../Assets/nav-logo.PNG';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
-  const isLoggedIn = false; // Replace later with real auth logic
+  const { isAuthenticated, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login'); // Redirect to login after logout
+  };
 
   return (
     <nav className="navbar">
@@ -21,8 +28,8 @@ const Navbar = () => {
         <li><Link to="/dashboard">Dashboard</Link></li>
       </ul>
       <div className="navbar-auth">
-        {isLoggedIn ? (
-          <button className="logout-btn">Logout</button>
+        {isAuthenticated ? (
+          <button className="logout-btn" onClick={handleLogout}>Logout</button>
         ) : (
           <Link to="/login" className="login-btn">Login</Link>
         )}

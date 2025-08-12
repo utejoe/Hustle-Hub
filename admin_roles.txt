@@ -1,0 +1,74 @@
+Exactly — introducing **user roles with levels** is the right way to scale an app like this. Here’s a smart breakdown of common user roles and what each should be responsible for in your **Campus Hustle** platform:
+
+---
+
+### 🔑 Recommended User Role Levels
+
+| Role              | Description                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------- |
+| **Super Admin**   | Full control over the entire platform. Can manage all users, roles, schools, listings, payments, etc.   |
+| **Admin**         | Platform-wide access to moderate listings, manage users, but cannot delete Super Admins.                |
+| **Moderator**     | Assigned to a specific school. Can approve/reject listings only from that school.                       |
+| **Editor**        | Content manager. Can edit or update listings/content but not approve/reject or delete.                  |
+| **Vendor (User)** | Default user role. Can post listings, manage their own services.                                        |
+| **Buyer (User)**  | Default user role. Can browse, chat, and place orders. (Same as vendor but hasn't listed anything yet). |
+
+---
+
+### 🧩 Suggested Schema Update (Admin/User Model)
+
+#### For **Admin.js**:
+
+```js
+const adminSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true }, // hashed
+  role: {
+    type: String,
+    enum: ["superadmin", "admin", "moderator", "editor"],
+    default: "moderator"
+  },
+  moderatedSchool: { type: String } // only for moderators
+});
+```
+
+#### For **User.js** (optional enhancement):
+
+```js
+role: {
+  type: String,
+  enum: ["vendor", "buyer"],
+  default: "buyer"
+},
+```
+
+---
+
+### 🛡 What This Enables
+
+| Action                         | Superadmin | Admin | Moderator           | Editor |
+| ------------------------------ | ---------- | ----- | ------------------- | ------ |
+| Approve listings (all schools) | ✅          | ✅     | ❌ (own school only) | ❌      |
+| Approve listings (own school)  | ✅          | ✅     | ✅                   | ❌      |
+| View dashboard analytics       | ✅          | ✅     | 🔶 optional         | ❌      |
+| Edit listing info              | ✅          | ✅     | ✅                   | ✅      |
+| Manage users                   | ✅          | ✅     | ❌                   | ❌      |
+| Manage roles                   | ✅          | ❌     | ❌                   | ❌      |
+| Delete listing                 | ✅          | ✅     | ❌                   | ❌      |
+
+---
+
+### ✅ Next Steps:
+
+1. **Update your `Admin.js` model** to include role + moderated school.
+2. Add **role checks** in your middleware.
+3. Refactor the `/admin/approve/:id` and `/reject/:id` routes to use these roles.
+4. Add logic in the frontend to show/hide features based on role.
+
+Would you like me to generate:
+
+* The updated `Admin.js` model with full roles?
+* Middleware to enforce role access?
+* Updated `/approve/:id` route?
+
+Let’s do it step by step.

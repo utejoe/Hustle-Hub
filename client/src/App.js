@@ -7,6 +7,9 @@ import BrowseListings from './Pages/BrowseListings';
 import PostListing from './Pages/PostListing';
 import Dashboard from './Pages/Dashboard';
 import LoginSignup from './Pages/LoginSignup'; // ✅ Imported here
+import ChangePassword from './Components/Auth/ChangePassword/ChangePassword';
+import ForgotPassword from './Components/Auth/ForgotPassword/ForgotPassword';
+import ResetPassword from './Components/Auth/ResetPassword/ResetPassword';
 
 const App = () => {
   return (
@@ -19,7 +22,10 @@ const App = () => {
             <Route path="/explore" element={<BrowseListings />} />
             <Route path="/post" element={<PostListing />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/login" element={<LoginSignup />} /> {/* ✅ Fixed */}
+            <Route path="/login" element={<LoginSignup />} />
+            <Route path="/change-password" element={<ChangePassword /> } /> 
+            <Route path="/forgot-password" element={<ForgotPassword /> } />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
           </Routes>
         </div>
         <Footer />

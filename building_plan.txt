@@ -100,4 +100,6 @@ client/src/
 
 
 
-there will be also a prompt that if your sckill is not here pls addd it.. 
+there will be also a prompt that if your skill is not here pls add it.. 
+and 
+If service you are looking for is not there pls add

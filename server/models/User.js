@@ -9,7 +9,9 @@ const userSchema = new mongoose.Schema({
   isVendor: { type: Boolean, default: false },
   isVerified: { type: Boolean, default: false },
   premium: { type: Boolean, default: false },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date }
 });
 
 module.exports = mongoose.model("User", userSchema);
