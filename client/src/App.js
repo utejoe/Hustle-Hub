@@ -10,6 +10,8 @@ import LoginSignup from './Pages/LoginSignup'; // ✅ Imported here
 import ChangePassword from './Components/Auth/ChangePassword/ChangePassword';
 import ForgotPassword from './Components/Auth/ForgotPassword/ForgotPassword';
 import ResetPassword from './Components/Auth/ResetPassword/ResetPassword';
+import Profile from './Pages/Profile';
+import VendorRoute from './Components/Protected/VendorRoute';
 
 const App = () => {
   return (
@@ -20,12 +22,17 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<BrowseListings />} />
-            <Route path="/post" element={<PostListing />} />
+
+            {/* Protected Vendor Route */}
+            <Route element={<VendorRoute />}>
+              <Route path="/post" element={<PostListing />} />
+            </Route>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<LoginSignup />} />
             <Route path="/change-password" element={<ChangePassword /> } /> 
             <Route path="/forgot-password" element={<ForgotPassword /> } />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path="/profile" element={<Profile /> } />
           </Routes>
         </div>
         <Footer />

@@ -1,18 +1,23 @@
 // server/routes/listingRoutes.js
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
 const {
   createListing,
   getAllListings,
   getListingById,
   boostListing
 } = require("../controllers/listingController");
+
+const vendorMiddleware = require("../middleware/vendorMiddleware");
 const auth = require("../middleware/authMiddleware");
 
-// ✅ ROUTES
-router.post("/", auth, createListing);        // POST /api/listings
-router.get("/", getAllListings);              // GET  /api/listings
-router.get("/:id", getListingById);           // GET  /api/listings/:id
-router.put("/:id/boost", auth, boostListing); // PUT  /api/listings/:id/boost
+// Routes
+router.post("/", auth, vendorMiddleware, upload.single("imageUrl"), createListing);
+router.get("/", getAllListings);
+router.get("/:id", getListingById);
+router.put("/:id/boost", auth, boostListing);
 
 module.exports = router;

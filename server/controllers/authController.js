@@ -5,16 +5,22 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
 exports.signup = async (req, res) => {
-  const { name, email, phone, password, school, isVendor } = req.body;
+  const { firstName, lastName, username, email, phone, password, school, isVendor } = req.body;
 
   try {
-    const userExists = await User.findOne({ email });
-    if (userExists) return res.status(400).json({ success: false, message: "Email already in use" });
+    // Check email and username unique
+    const emailExists = await User.findOne({ email });
+    if (emailExists) return res.status(400).json({ success: false, message: "Email already in use" });
+
+    const usernameExists = await User.findOne({ username });
+    if (usernameExists) return res.status(400).json({ success: false, message: "Username already taken" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
-      name,
+      firstName,
+      lastName,
+      username,
       email,
       phone,
       password: hashedPassword,
@@ -30,10 +36,14 @@ exports.signup = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  const { identifier, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    // Find user by email OR username
+    const user = await User.findOne({
+      $or: [{ email: identifier }, { username: identifier }]
+    });
+
     if (!user) return res.status(404).json({ success: false, message: "User not found" });
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -46,7 +56,9 @@ exports.login = async (req, res) => {
       token,
       user: {
         id: user._id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        username: user.username,
         email: user.email,
         isVendor: user.isVendor,
         school: user.school
@@ -148,6 +160,53 @@ exports.resetPassword = async (req, res) => {
     res.json({ success: true, message: "Password reset successfully" });
   } catch (err) {
     console.error("Reset password error:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+// Inside authController.js
+exports.getCurrentUser = async (req, res) => {
+  try {
+    const userId = req.user.id;  // authMiddleware adds this
+    const user = await User.findById(userId).select("-password"); // exclude password
+
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    res.json({ success: true, user });
+  } catch (err) {
+    console.error("Get current user error:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+exports.updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id; // from authMiddleware
+    const { firstName, lastName, username, phone, school, isVendor } = req.body;
+
+    // Find user
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    // Optionally check if username is changing and if new username is taken
+    if (username && username !== user.username) {
+      const usernameExists = await User.findOne({ username });
+      if (usernameExists) return res.status(400).json({ success: false, message: "Username already taken" });
+    }
+
+    // Update fields
+    user.firstName = firstName || user.firstName;
+    user.lastName = lastName || user.lastName;
+    user.username = username || user.username;
+    user.phone = phone || user.phone;
+    user.school = school || user.school;
+    user.isVendor = typeof isVendor === "boolean" ? isVendor : user.isVendor;
+
+    await user.save();
+
+    res.json({ success: true, message: "Profile updated successfully", user });
+  } catch (err) {
+    console.error("Update profile error:", err);
     res.status(500).json({ success: false, message: "Server error" });
   }
 };

@@ -1,0 +1,44 @@
+@import "../ProfileCommon.css";
+
+.profile-details-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-details-form label {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.profile-details-form input[type="text"],
+.profile-details-form input[type="email"],
+.profile-details-form input[type="tel"] {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.profile-details-form input[readonly] {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.checkbox-label {
+  font-weight: normal;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.message {
+  margin-top: 15px;
+  color: green;
+  font-weight: 600;
+}

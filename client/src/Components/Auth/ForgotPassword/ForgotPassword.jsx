@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthContext';
 import './ForgotPassword.css';
-import axios from 'axios';
 
 const ForgotPassword = () => {
+  const { forgotPassword } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3300/api/auth/forgot-password', { email });
-      setMessage(res.data.message || 'Password reset link sent to your email');
+      const res = await forgotPassword(email);
+      setMessage(res.message || 'Password reset link sent to your email');
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Something went wrong');
+      setMessage(err.response?.data?.message || err.message || 'Something went wrong');
     }
   };
 

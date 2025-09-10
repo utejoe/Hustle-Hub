@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { AuthContext } from '../../../Context/AuthContext';
 import "./ResetPassword.css";
 
 const ResetPassword = () => {
   const { token } = useParams();
   const navigate = useNavigate();
+  const { resetPassword } = useContext(AuthContext);
+
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
 
@@ -16,15 +18,13 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:3300/api/auth/reset-password/${token}`, {
-        newPassword,
-      });
-      setMessage(res.data.message);
-      if (res.data.success) {
+      const res = await resetPassword(token, newPassword);
+      setMessage(res.message);
+      if (res.success) {
         setTimeout(() => navigate("/login"), 2000);
       }
     } catch (err) {
-      setMessage(err.response?.data?.message || "Something went wrong");
+      setMessage(err.response?.data?.message || err.message || "Something went wrong");
     }
   };
 

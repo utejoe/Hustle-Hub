@@ -42,3 +42,18 @@ out/
 
 # Misc
 *.swp
+
+
+# Ignore the plans folder
+_plans/
+
+# Ignore specific project files
+Campus_Hustle_Launch_Plan.txt
+Color_Palette_Guide.txt
+ResetPassword.jsx
+admin_roles.txt
+building_plan.txt
+connecting_frontend_and_backend.txt
+finance_plan.txt
+list_structure.py
+list_structure.txt

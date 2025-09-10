@@ -28,3 +28,32 @@
   background-color: var(--primary-yellow);
   color: var(--black);
 }
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* space for toggle button */
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-muted);
+}
+
+.password-toggle:hover {
+  color: var(--dark-bg);
+}

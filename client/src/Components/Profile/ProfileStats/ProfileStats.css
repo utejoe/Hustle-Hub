@@ -1,0 +1,33 @@
+@import "../ProfileCommon.css";
+
+.stats-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 18px;
+  background-color: var(--light-gray);
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  background-color: #fff3cc;
+}
+
+.stat-item h3 {
+  color: #0077cc;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.stat-item p {
+  font-weight: 600;
+}

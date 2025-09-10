@@ -12,8 +12,6 @@ const listingSchema = new mongoose.Schema({
   isBoosted: { type: Boolean, default: false },
   boostExpiry: { type: Date },
 
-  isVerified: { type: Boolean, default: false },
-
   status: {
     type: String,
     enum: ["pending", "approved", "rejected"],

@@ -1,0 +1,8 @@
+@import "../ProfileCommon.css";
+
+.profile-actions {
+  max-width: 500px;
+  margin: 20px auto 60px;
+  display: flex;
+  justify-content: space-between;
+}
